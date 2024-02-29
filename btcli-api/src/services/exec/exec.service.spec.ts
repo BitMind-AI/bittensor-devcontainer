@@ -39,7 +39,10 @@ describe('ExecService', () => {
   it('should throw ExecException when stderr contains errors', async () => {
     const mockExec = cp.exec as unknown as jest.Mock;
     mockExec.mockImplementation((cmd, callback) =>
-      callback(null, { stdout: '', stderr: 'error: something went wrong' }),
+      callback(null, {
+        stdout: '',
+        stderr: 'command failed: something went wrong',
+      }),
     );
 
     await expect(service.executeCommand('someCommand')).rejects.toThrow(
