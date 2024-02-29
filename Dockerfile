@@ -9,7 +9,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
 # Set working directory to the user's home directory
 WORKDIR /root
 
