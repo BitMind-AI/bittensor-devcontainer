@@ -1,0 +1,48 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      matrix:
+        platforms: ['linux/amd64', 'linux/arm64']
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/bittensor-devcontainer:latest
+            ghcr.io/${{ github.repository }}/bittensor-devcontainer:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.description=BitMind multi-arch image for Bittensor development
+          platforms: ${{ matrix.platforms }}
+
+      - name: Verify Image
+        run: docker run --rm ghcr.io/${{ github.repository }}/bittensor-devcontainer:latest /path/to/your/test/script
+
