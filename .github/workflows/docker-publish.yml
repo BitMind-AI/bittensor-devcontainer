@@ -36,10 +36,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/bittensor-devcontainer:latest
-            ghcr.io/${{ github.repository }}/bittensor-devcontainer:${{ github.sha }}
+            ghcr.io/bitmind-ai/bittensor-devcontainer:latest
+            ghcr.io/bitmind-ai/bittensor-devcontainer:${{ github.sha }}
           labels: |
-            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.source=https://github.com/bitmind-ai/bittensor-devcontainer
             org.opencontainers.image.description=BitMind multi-arch image for Bittensor development
           platforms: ${{ matrix.platforms }}
 
