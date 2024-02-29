@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  WORKING_DIRECTORY: btcli-api # Define the working directory as a global variable
+  WORKING_DIRECTORY: btcli-api 
 
 jobs:
   build:
