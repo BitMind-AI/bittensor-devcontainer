@@ -44,5 +44,5 @@ jobs:
           platforms: ${{ matrix.platforms }}
 
       - name: Verify Image
-        run: docker run --rm ghcr.io/${{ github.repository }}/bittensor-devcontainer:latest /path/to/your/test/script
+        run: docker run --rm ghcr.io/bitmind-ai/bittensor-devcontainer:latest /path/to/your/test/script
 
