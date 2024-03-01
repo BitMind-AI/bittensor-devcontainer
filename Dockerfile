@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update and install Python, pip, and venv
 RUN apt-get update && \
-    apt-get install -y git python3 python3-pip python3-venv && \
+    apt-get install -y git curl nodejs npm python3 python3-pip python3-venv && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -20,6 +20,12 @@ RUN echo "source ~/devenv/bin/activate" >> ~/.bashrc
 # Note: This RUN command does not persist the activation state to subsequent commands or sessions.
 # The .bashrc modification above ensures activation upon login.
 # RUN . ~/devenv/bin/activate && pip install bittensor
+
+COPY btcli-api btcli-api
+
+# WORKDIR /root/btcli-api
+# RUN npm ci
+# RUN npm run build
 
 # Set the default command to open a bash shell
 CMD ["/bin/bash"]
