@@ -46,6 +46,6 @@ jobs:
             org.opencontainers.image.description=BitMind multi-arch image for Bittensor development
           platforms: ${{ matrix.platforms }}
 
-      - name: Verify Image
-        run: docker run --rm ghcr.io/bitmind-ai/bittensor-devcontainer:latest /path/to/your/test/script
+      # - name: Verify Image
+      #   run: docker run --rm ghcr.io/bitmind-ai/bittensor-devcontainer:latest /path/to/your/test/script
 

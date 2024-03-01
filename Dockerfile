@@ -19,7 +19,7 @@ RUN echo "source ~/devenv/bin/activate" >> ~/.bashrc
 # Activate the virtual environment and install bittensor
 # Note: This RUN command does not persist the activation state to subsequent commands or sessions.
 # The .bashrc modification above ensures activation upon login.
-RUN . ~/devenv/bin/activate && pip install bittensor
+# RUN . ~/devenv/bin/activate && pip install bittensor
 
 # Set the default command to open a bash shell
 CMD ["/bin/bash"]
