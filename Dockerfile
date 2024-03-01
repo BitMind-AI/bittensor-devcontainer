@@ -16,16 +16,6 @@ WORKDIR /root
 RUN python3 -m venv devenv
 RUN echo "source ~/devenv/bin/activate" >> ~/.bashrc
 
-# Activate the virtual environment and install bittensor
-# Note: This RUN command does not persist the activation state to subsequent commands or sessions.
-# The .bashrc modification above ensures activation upon login.
-# RUN . ~/devenv/bin/activate && pip install bittensor
-
+# Copy and build btcli-api
 COPY btcli-api btcli-api
-
-# WORKDIR /root/btcli-api
-# RUN npm ci
-# RUN npm run build
-
-# Set the default command to open a bash shell
-CMD ["/bin/bash"]
+RUN cd ./btcli-api && npm ci && npm run build
