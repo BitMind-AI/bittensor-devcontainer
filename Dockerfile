@@ -15,5 +15,3 @@ WORKDIR /root
 # Create a virtual environment and activate it automatically on login
 RUN python3 -m venv devenv
 RUN echo "source ~/devenv/bin/activate" >> ~/.bashrc
-
-CMD ["bin/bash"]
