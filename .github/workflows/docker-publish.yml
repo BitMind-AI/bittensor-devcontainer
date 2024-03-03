@@ -49,8 +49,8 @@ jobs:
       - name: Build and push btcli-api Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./btcli-api/Dockerfile
+          context: ./btcli-api
+          file: Dockerfile
           push: true
           tags: |
             ghcr.io/bitmind-ai/btcli-api:latest
