@@ -1,12 +1,10 @@
 name: Build and Push Docker Image
 
+
 on:
-  workflow_run:
-    workflows: ["NestJS CI"]
-    branches: [main]
-    types:
-      - completed
   push:
+    branches:
+      - main
     tags:
       - 'v*'
 
