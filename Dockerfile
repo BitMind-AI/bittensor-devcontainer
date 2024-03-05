@@ -14,3 +14,7 @@ WORKDIR /root
 # Create a virtual environment and activate it automatically on login
 RUN python3 -m venv devenv
 RUN echo "source ~/devenv/bin/activate" >> ~/.bashrc
+
+# Install PyCharm Professional
+RUN mkdir -p /opt/pycharm
+RUN curl -L "https://download.jetbrains.com/product?code=PCP&latest&distribution=linux" | tar -C /opt/pycharm --strip-components 1 -xzvf -
