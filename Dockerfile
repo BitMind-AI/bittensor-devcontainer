@@ -6,8 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install Python, pip, venv, git, curl, nodejs, npm, and supervisord
 RUN apt-get update && \
     apt-get install -y git curl python3 python3-pip python3-venv supervisor && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean
 
 # Set working directory to the user's home directory
 WORKDIR /root
